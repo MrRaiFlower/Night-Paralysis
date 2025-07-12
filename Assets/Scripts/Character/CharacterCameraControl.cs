@@ -4,12 +4,12 @@ using UnityEngine.InputSystem;
 public class CharacterCameraControl : MonoBehaviour
 {
     [Header("References")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] GameObject _character;
     [SerializeField] GameObject _cameraHolder;
 
     [Header("Parameters")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _sensitivity;
 
     [HideInInspector] public Vector2 cursorVelocity;

@@ -5,35 +5,35 @@ public class CharacterMovementControl : MonoBehaviour
 {
     public enum speedTypeEnum
     {
-        None,
+        Idle,
         Walk,
         Crouch,
         Sprint
     }
 
     [Header("References")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] GameObject _character;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] CharacterController _characterController;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] CharacterHeightControl _characterHeightControl;
     [SerializeField] CharacterStamina _characterStaminaControl;
     [SerializeField] CharacterSFX _characterSFX;
 
     [Header("Parameters")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _walkSpeed;
     [SerializeField] float _crouchSpeed;
     [SerializeField] float _sprintSpeed;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _acceleration;
     [SerializeField] float _angularAcceleration;
     [SerializeField] float _groundDrag;
     [SerializeField] float _airDrag;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] LayerMask _characterLayerMask;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _jumpSpeed;
     [SerializeField] float _jumpCooldown;
 
@@ -132,7 +132,7 @@ public class CharacterMovementControl : MonoBehaviour
     {
         _wasGrounded = isGrounded;
 
-        isGrounded = Physics.CheckSphere(_character.transform.position + Vector3.up * _characterController.radius * 0.45f, _characterController.radius * 0.95f, ~_characterLayerMask);
+        isGrounded = Physics.CheckSphere(_character.transform.position + Vector3.up * _characterController.radius * 0.45f, _characterController.radius * 0.95f, ~_characterLayerMask, QueryTriggerInteraction.Ignore);
 
         hasGrounded = !_wasGrounded && isGrounded;
     }
@@ -141,7 +141,7 @@ public class CharacterMovementControl : MonoBehaviour
     {
         _touchedCeiling = touchesCeiling;
 
-        touchesCeiling = Physics.CheckSphere(_character.transform.position + Vector3.up * (_characterController.height - _characterController.radius * 0.45f), _characterController.radius * 0.95f, ~_characterLayerMask);
+        touchesCeiling = Physics.CheckSphere(_character.transform.position + Vector3.up * (_characterController.height - _characterController.radius * 0.45f), _characterController.radius * 0.95f, ~_characterLayerMask, QueryTriggerInteraction.Ignore);
 
         hasTouchedCeiling = !_touchedCeiling && touchesCeiling;
     }
@@ -217,7 +217,7 @@ public class CharacterMovementControl : MonoBehaviour
 
         if (speed == 0f)
         {
-            speedType = speedTypeEnum.None;
+            speedType = speedTypeEnum.Idle;
         }
         else
         {

@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Window
+  - Room Door
+  - Entrance Door
+  - Light Switch
+  - Vent Tunnel
   layers:
   - Default
   - TransparentFX
@@ -12,7 +17,7 @@ TagManager:
   - Water
   - UI
   - Character
-  - 
+  - Interactable Object
   - 
   - 
   - 

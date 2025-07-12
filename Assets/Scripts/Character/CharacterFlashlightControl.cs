@@ -4,15 +4,15 @@ using UnityEngine.InputSystem;
 public class CharacterFlashlightControl : MonoBehaviour
 {
     [Header("References")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] Animator _animator;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] CharacterSFX _characterSFX;
 
     [Header("Parameters")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _switchCooldown;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _maxCharge;
     [SerializeField] float _dischargeSpeed;
 

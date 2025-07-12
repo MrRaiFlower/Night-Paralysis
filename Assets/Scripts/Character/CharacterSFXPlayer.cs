@@ -3,33 +3,33 @@ using UnityEngine;
 public class CharacterSFX : MonoBehaviour
 {
     [Header("References")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] AudioSource _footstepsAudioSource;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] AudioSource _jumpAudioSource;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] AudioSource _landingAudioSource;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] AudioSource _flashlightAudioSource;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] CharacterMovementControl _characterMovementControl;
 
     [Header("Parameters")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _normalFootstepsVolume;
     [SerializeField] float _lightFootstepsVolume;
     [SerializeField] float _heavyFootstepsVolume;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _jumpVolume;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _normalLandingVelocityTreshold;
     [SerializeField] float _lightLandingVelocityTreshold;
     [SerializeField] float _heavyLandingVelocityTreshold;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _normalLandingVolume;
     [SerializeField] float _lightLandingVolume;
     [SerializeField] float _heavyLandingVolume;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _flashlightVolume;
 
     void Start()

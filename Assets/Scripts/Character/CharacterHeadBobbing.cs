@@ -4,25 +4,25 @@ using UnityEngine.XR;
 public class CharacterHeadBobbing : MonoBehaviour
 {
     [Header("References")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] GameObject _camera;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] CharacterMovementControl _characterMovementControl;
     [SerializeField] CharacterSFX _characterSFX;
 
     [Header("Parameters")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _footstepsSpeed;
     [SerializeField] float _footstepsDepth;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _normalFootstepsSpeedMultiplier;
     [SerializeField] float _lightFootstepsSpeedMultiplier;
     [SerializeField] float _heavyFootstepsSpeedMultiplier;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _normalFootstepsDepthMultiplier;
     [SerializeField] float _lightFootstepsDepthMultiplier;
     [SerializeField] float _heavyFootstepsDepthMultiplier;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _landingOffsetVelocityTreshold;
     [SerializeField] float _landingOffsetVelocityProportion;
     [SerializeField] float _LandingOffset;
@@ -54,7 +54,7 @@ public class CharacterHeadBobbing : MonoBehaviour
 
     void Update()
     {
-        if (_characterMovementControl.speed > 0.5f && _characterMovementControl.isGrounded && !_makesFootstep)
+        if (_characterMovementControl.speed > 1.75f && _characterMovementControl.isGrounded && !_makesFootstep)
         {
             _makesFootstep = true;
         }

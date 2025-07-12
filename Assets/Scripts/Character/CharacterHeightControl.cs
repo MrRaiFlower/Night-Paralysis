@@ -4,19 +4,19 @@ using UnityEngine.InputSystem;
 public class CharacterHeightControl : MonoBehaviour
 {
     [Header("References")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] GameObject _cameraHolder;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] CharacterController _characterController;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] CharacterMovementControl _characterMovementControl;
 
     [Header("Parameters")]
-    [Space(16f)]
+    [Space(16.0f)]
     public float normalHeight;
     public float crouchHeight;
     [SerializeField] float _heightChangeSpeed;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float _cameraHolderHeightRatio;
 
     InputAction _crouchAction;
@@ -50,7 +50,7 @@ public class CharacterHeightControl : MonoBehaviour
             UpdatePositions();
         }
 
-        if ((!_crouchAction.IsPressed() && _characterController.height != normalHeight && !_characterMovementControl.touchesCeiling) || (!_characterMovementControl.isGrounded))
+        if (!_crouchAction.IsPressed() && _characterController.height != normalHeight && !_characterMovementControl.touchesCeiling)
         {
             _characterController.height = Mathf.Lerp(_characterController.height, normalHeight, _heightChangeSpeed * Time.deltaTime);
 

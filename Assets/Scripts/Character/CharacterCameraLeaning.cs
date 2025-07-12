@@ -3,13 +3,13 @@ using UnityEngine;
 public class CharacterCameraLeaning : MonoBehaviour
 {
     [Header("References")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] GameObject _camera;
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] CharacterMovementControl _characterMovementControl;
 
     [Header("Parameters")]
-    [Space(16f)]
+    [Space(16.0f)]
     [SerializeField] float leanAngle;
     [SerializeField] float leanAngleProportion;
     [SerializeField] float leanSpeed;
