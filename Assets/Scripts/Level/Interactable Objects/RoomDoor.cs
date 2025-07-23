@@ -8,12 +8,7 @@ public class RoomDoor : MonoBehaviour
     [Space(16.0f)]
     [SerializeField] BoxCollider _collider;
     [Space(16.0f)]
-    [SerializeField] AudioSource _doorOpenSound;
-    [SerializeField] AudioSource _doorCloseSound;
-
-    [Header("Parameters")]
-    [Space(16.0f)]
-    [SerializeField] float _audioVolume;
+    [SerializeField] AudioSource _doorSound;
 
     bool _isOpen;
 
@@ -22,9 +17,6 @@ public class RoomDoor : MonoBehaviour
     void Start()
     {
         _canChangeState = true;
-
-        _doorOpenSound.volume = _audioVolume;
-        _doorCloseSound.volume = _audioVolume;
     }
 
     void Update()
@@ -40,14 +32,14 @@ public class RoomDoor : MonoBehaviour
 
             _collider.enabled = false;
 
+            _doorSound.Play();
+
             if (_isOpen)
             {
-                _doorCloseSound.Play();
                 _animator.Play("Close");
             }
             else
             {
-                _doorOpenSound.Play();
                 _animator.Play("Open");
             }
 

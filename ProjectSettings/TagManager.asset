@@ -9,6 +9,8 @@ TagManager:
   - Entrance Door
   - Light Switch
   - Vent Tunnel
+  - Lights Panel Glass
+  - Lights Panel
   layers:
   - Default
   - TransparentFX

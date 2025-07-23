@@ -6,7 +6,9 @@ public class LightSource : MonoBehaviour
     [Space(16.0f)]
     [SerializeField] Animator _animator;
 
-    bool _isOn;
+    [HideInInspector] public bool isOn;
+
+    [HideInInspector] public bool hasNoPower;
 
     bool _isReadyToSwitch;
 
@@ -17,28 +19,28 @@ public class LightSource : MonoBehaviour
 
     void Update()
     {
-
+        
     }
 
     public void SwitchState()
     {
         if (_isReadyToSwitch)
-        {
-            _isReadyToSwitch = false;
-
-            if (_isOn)
             {
-                _animator.Play("TurnOff");
-            }
-            else
-            {
-                _animator.Play("TurnOn");
-            }
+                _isReadyToSwitch = false;
 
-            _isOn = !_isOn;
+                if (isOn)
+                {
+                    _animator.Play("TurnOff");
+                }
+                else
+                {
+                    _animator.Play("TurnOn");
+                }
 
-            Invoke(nameof(ResetReadyToSwitch), 0.2f);
-        }
+                isOn = !isOn;
+
+                Invoke(nameof(ResetReadyToSwitch), 0.2f);
+            }
     }
 
     void ResetReadyToSwitch()

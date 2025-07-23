@@ -108,23 +108,31 @@ public class CharacterMovementControl : MonoBehaviour
 
     void ProcessMovementInput()
     {
-        isMoving = _moveAction.ReadValue<Vector2>().sqrMagnitude != 0f && isGrounded;
+        isMoving = _moveAction.ReadValue<Vector2>().sqrMagnitude != 0f;
 
-        if (isMoving)
+        if (isGrounded)
         {
-            if (speed == 0f)
+            if (isMoving)
             {
-                _moveDirection = _character.transform.forward * _moveAction.ReadValue<Vector2>().y + _character.transform.right * _moveAction.ReadValue<Vector2>().x;
-            }
-            else
-            {
-                _moveDirection = Vector3.Lerp(_moveDirection, _character.transform.forward * _moveAction.ReadValue<Vector2>().y + _character.transform.right * _moveAction.ReadValue<Vector2>().x, _angularAcceleration * Time.deltaTime);
-            }
+                if (speed == 0f)
+                {
+                    _moveDirection = _character.transform.forward * _moveAction.ReadValue<Vector2>().y + _character.transform.right * _moveAction.ReadValue<Vector2>().x;
+                }
+                else
+                {
+                    _moveDirection = Vector3.Lerp(_moveDirection, _character.transform.forward * _moveAction.ReadValue<Vector2>().y + _character.transform.right * _moveAction.ReadValue<Vector2>().x, _angularAcceleration * Time.deltaTime);
+                }
 
-            if (_moveDirection.sqrMagnitude > 1f)
-            {
-                _moveDirection.Normalize();
+                if (_moveDirection.sqrMagnitude > 1f)
+                {
+                    _moveDirection.Normalize();
+                }
             }
+        }
+
+        if (!isMoving)
+        {
+            _moveDirection = Vector3.Lerp(_moveDirection, Vector3.zero, _angularAcceleration * Time.deltaTime);
         }
     }
 
@@ -205,14 +213,14 @@ public class CharacterMovementControl : MonoBehaviour
         else
         {
             if (speed != 0f)
-                {
-                    speed = Mathf.Lerp(speed, 0f, _airDrag * Time.deltaTime);
+            {
+                speed = Mathf.Lerp(speed, 0f, _airDrag * Time.deltaTime);
 
-                    if (speed < 0.01f)
-                    {
-                        speed = 0f;
-                    }
+                if (speed < 0.01f)
+                {
+                    speed = 0f;
                 }
+            }
         }
 
         if (speed == 0f)

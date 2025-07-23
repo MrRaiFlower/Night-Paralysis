@@ -139,9 +139,9 @@ public class CharacterHeadBobbing : MonoBehaviour
         {
             _currentLandingOffset += _landingVelocity * Time.deltaTime;
 
-            if (_currentLandingOffset < -_targetLandingOffset)
+            if (_currentLandingOffset < _targetLandingOffset)
             {
-                _currentLandingOffset = -_targetLandingOffset;
+                _currentLandingOffset = _targetLandingOffset;
 
                 _lands = false;
             }

@@ -6,7 +6,6 @@ public class VentTunnel : MonoBehaviour
     {
         Safe,
         Low,
-        Moderate,
         High
     }
 
@@ -40,8 +39,7 @@ public class VentTunnel : MonoBehaviour
 
             switch (dangerStage)
             {
-                case dangerStageEnum.Low: _animator.Play("OpenSlightly"); break;
-                case dangerStageEnum.Moderate: _animator.Play("OpenHalf"); break;
+                case dangerStageEnum.Low: _animator.Play("OpenHalf"); break;
                 case dangerStageEnum.High: _animator.Play("OpenFull"); break;
             }
 
@@ -61,7 +59,6 @@ public class VentTunnel : MonoBehaviour
             {
                 case dangerStageEnum.Safe: _animator.Play("CloseFull"); break;
                 case dangerStageEnum.Low: _animator.Play("CloseHalf"); break;
-                case dangerStageEnum.Moderate: _animator.Play("CloseSlightly"); break;
             }
 
             Invoke(nameof(ResetStateChangeCooldown), 0.2f);

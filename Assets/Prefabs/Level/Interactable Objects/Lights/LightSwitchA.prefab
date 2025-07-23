@@ -117,8 +117,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.05, y: 0.25, z: 0.25}
-  m_Center: {x: -0.025, y: 0, z: 0}
+  m_Size: {x: 0.1, y: 0.5, z: 0.35}
+  m_Center: {x: -0.05, y: 0, z: 0}
 --- !u!114 &8664007861363933222
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +134,7 @@ MonoBehaviour:
   _animator: {fileID: 4571358325331665034}
   _lights: []
   _switchSound: {fileID: 635267606923491884}
+  isOn: 0
 --- !u!95 &4571358325331665034
 Animator:
   serializedVersion: 7
@@ -166,10 +167,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c16913e05a50bcf4990c0cc07d455c06, type: 3}
-  m_Resource: {fileID: 8300000, guid: c16913e05a50bcf4990c0cc07d455c06, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7e4a528c4d917c44a856b390e04fbbd2, type: 3}
+  m_Resource: {fileID: 8300000, guid: 7e4a528c4d917c44a856b390e04fbbd2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.02
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -178,9 +179,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 2
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -213,7 +214,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

@@ -10,7 +10,7 @@ public class LightSwitch : MonoBehaviour
     [Space(16.0f)]
     [SerializeField] AudioSource _switchSound;
 
-    bool _isOn;
+    [HideInInspector] public bool isOn;
 
     bool _isReadyToSwitch;
 
@@ -27,33 +27,60 @@ public class LightSwitch : MonoBehaviour
     public void SwitchState()
     {
         if (_isReadyToSwitch)
-        {
-            _isReadyToSwitch = false;
-
-            foreach (GameObject _light in _lights)
             {
-                _light.GetComponent<LightSource>().SwitchState();
+                _isReadyToSwitch = false;
+
+                foreach (GameObject _light in _lights)
+                {
+                    if (!_light.GetComponent<LightSource>().hasNoPower)
+                    {
+                        _light.GetComponent<LightSource>().SwitchState();
+                    }
+                }
+
+                _switchSound.Play();
+
+                if (isOn)
+                {
+                    _animator.Play("TurnOff");
+                }
+                else
+                {
+                    _animator.Play("TurnOn");
+                }
+
+                isOn = !isOn;
+
+                Invoke(nameof(ResetReadyToSwitch), 0.2f);
             }
-
-            _switchSound.Play();
-
-            if (_isOn)
-            {
-                _animator.Play("TurnOff");
-            }
-            else
-            {
-                _animator.Play("TurnOn");
-            }
-
-            _isOn = !_isOn;
-
-            Invoke(nameof(ResetReadyToSwitch), 0.2f);
-        }
     }
 
     void ResetReadyToSwitch()
     {
         _isReadyToSwitch = true;
+    }
+
+    public void SwitchOff()
+    {
+        if (isOn)
+        {
+            SwitchState();
+        }
+    }
+
+    public void UpdatePower()
+    {
+        foreach (GameObject _light in _lights)
+        {
+            if (_light.GetComponent<LightSource>().hasNoPower && _light.GetComponent<LightSource>().isOn && isOn)
+            {
+                _light.GetComponent<LightSource>().SwitchState();
+            }
+
+            if (!_light.GetComponent<LightSource>().hasNoPower && !_light.GetComponent<LightSource>().isOn && isOn)
+            {
+                _light.GetComponent<LightSource>().SwitchState();
+            }
+        }
     }
 }
